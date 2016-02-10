@@ -29,8 +29,8 @@ class puppetdb::master::config (
   $restart_puppet              = true,
 ) inherits puppetdb::params {
 
-  if (::osfamily == 'RedHat' and $terminus_package == 'puppetdb-termini') {
-    package { 'puppetdb_terminus':
+  if ($::osfamily == 'RedHat' and $terminus_package == 'puppetdb-termini') {
+    package { 'puppetdb-terminus':
       ensure => absent,
       before => Package[$terminus_package],
     }
